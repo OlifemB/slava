@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { handleOverviewGetList, handleOverviewGetId } from "@actions/overviewActions";
+import { handleOverviewGetList, handleOverviewGetItem } from "@actions/overviewActions";
 import Overview from "./overview";
 
 const _Overview = (props) => {
-  const { overview, handleOverviewGetList, handleOverviewGetId } = props;
+  const { overview, handleOverviewGetList, handleOverviewGetItem } = props;
   return (
     <Overview
       list={overview.list}
@@ -12,7 +12,7 @@ const _Overview = (props) => {
       type={overview.type}
       id={overview.id}
       handleOverviewGetList={handleOverviewGetList}
-      handleOverviewGetId={handleOverviewGetId}
+      handleOverviewGetItem={handleOverviewGetItem}
     />
   );
 };
@@ -26,7 +26,7 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
   return {
     handleOverviewGetList: (list) => dispatch(handleOverviewGetList(list)),
-    handleOverviewGetId: (id) => dispatch(handleOverviewGetId(id))
+    handleOverviewGetItem: (id) => dispatch(handleOverviewGetItem(id))
   };
 };
 

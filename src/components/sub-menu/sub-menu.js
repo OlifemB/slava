@@ -2,21 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./sub-menu.scss";
 
-const SubMenuItem = ({ id, name, handleOverviewGetId }) => {
+const SubMenuItem = ({ id, index, name, handleOverviewGetItem }) => {
   const handleClick = (e) => {
     e.preventDefault();
-    handleOverviewGetId(id);
+    handleOverviewGetItem(index);
   }
   return (
-    <li id={id} className={`submenu-item`}>
-      <a href={`#`} className={`submenu-link`} onClick={(e) => { handleClick(e) }}>
+    <li id={index} className={`submenu-item`}>
+      <a href={`#`} className={`submenu-link ${id === index ? 'active' : null}`} onClick={(e) => { handleClick(e) }}>
         {name}
       </a>
     </li>
   );
 };
 
-const SubMenu = ({ list, handleOverviewGetId }) => {
+const SubMenu = ({ id, list, handleOverviewGetItem }) => {
   const renderTemplate = () => {
     const godsKeys = Array.from(Object.keys(list));
     const godsValues = Array.from(Object.values(list));
@@ -24,15 +24,16 @@ const SubMenu = ({ list, handleOverviewGetId }) => {
       <div className={`submenu`}>
         <div className={`submenu-header`}>
           Боги
-          </div>
-        <ul className={`submenu-list`}>
+        </div>
+        <ul className={`submenu-list fade-down `}>
           {godsValues.map((item, index) =>
             <SubMenuItem
               {...item}
-              id={godsKeys[index]}
+              id={id}
               key={item.name}
-              handleOverviewGetId={handleOverviewGetId}
-            />)}
+              index={godsKeys[index]}
+              handleOverviewGetItem={handleOverviewGetItem} />
+          )}
         </ul>
       </div>
     );

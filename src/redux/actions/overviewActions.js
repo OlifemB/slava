@@ -11,7 +11,7 @@ export const handleOverviewGetList = (data) => {
   };
 };
 
-export const handleOverviewGetId = (data) => {
+export const handleOverviewGetItem = (data) => {
   return (dispatch) => {
     dispatch({
       type: GET_OVERVIEW_ID,

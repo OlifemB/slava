@@ -9,9 +9,6 @@
   justify-content: center;
   transition-duration: 0.3s;
 
-  &:hover {
-    box-shadow: 0 0 30px 0 #fff;
-  }
   &-header {
     font-size: 24px;
     padding: 1em;
@@ -44,12 +41,20 @@
     border-top: 2px solid transparent;
     border-radius: 3px;
     transition-duration: 0.3s;
-
-    &:hover {
-      flex: 1;
-      color: #fff;
-      border-color: #fff;
-      font-size: 20px;
-    }
   }
+}
+
+//Control
+
+.submenu:hover {
+  box-shadow: 0 0 30px 0 #fff;
+}
+.submenu-link:hover {
+  color: #fff;
+  font-size: 24px;
+}
+.submenu-link.active{
+  color: #fff;
+  border-color: #fff;
+  font-size: 20px;
 }

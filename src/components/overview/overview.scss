@@ -1,24 +1,27 @@
-.overview{
+.overview {
+  position: relative;
   display: flex;
   width: 100%;
   height: 100vh;
-  color: #FFF;
+  color: #fff;
 
-  &-item{
+  &-item {
     flex: 5;
     display: flex;
     flex-direction: column;
-    align-content: center;
+    justify-content: center;
     align-items: center;
-    outline: 1px solid red
   }
 
-  &-info{
+  &-info {
     flex: 5;
-    outline: 1px solid blue
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
-  &-header{
+  &-header {
     width: 100%;
     height: 100px;
     display: flex;
@@ -27,16 +30,33 @@
     text-transform: uppercase;
   }
 
-  &-description{
+  &-description {
     width: 100%;
-    max-height: calc(100% - 120px);
+    max-height: calc(100% - 220px);
     overflow-y: scroll;
+    text-overflow: ellipsis;
 
-    & p{
+    & p {
       padding-top: 0;
       font-size: 16px;
-      text-indent: .5rem;
+      text-indent: 0.5rem;
       line-height: 24px;
     }
   }
+  &-control{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    left: 100%;
+    top: 50%;
+    transform: translate(100%, -50%);
+    outline: 1px solid red;
+    height: 100vh;
+  }
+}
+
+.fade-down {
+  -webkit-mask-image: -webkit-gradient(linear, left 95%, left bottom, from(#000), to(#0000));
 }

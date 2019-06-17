@@ -1,23 +1,27 @@
 import React from "react";
-import { dataGods } from "./data-gods";
+import { dataGods } from "@data/data-gods";
 import "./overview.scss";
 import SubMenu from "@components/sub-menu";
 
-const Overview = ({ id, loaded, list, handleOverviewGetList, handleOverviewGetId }) => {
+const Overview = ({ id, loaded, list, handleOverviewGetList, handleOverviewGetItem }) => {
 
   const renderTemplate = () => {
     if (!loaded) {
-      return handleOverviewGetList(dataGods);
+      if (Object.keys(dataGods).length > 0)
+        return handleOverviewGetList(dataGods);
+      else
+        return null
     }
     if (id === "") {
-      return handleOverviewGetId(Object.keys(list)[0])
+      return handleOverviewGetItem(Object.keys(list)[0])
     }
     return (
       <div className={`overview`}>
         <SubMenu
           loaded={loaded}
           list={list}
-          handleOverviewGetId={handleOverviewGetId} />
+          id={id}
+          handleOverviewGetItem={handleOverviewGetItem} />
         <div className={`overview-item`}>
           item
         </div>
@@ -25,11 +29,15 @@ const Overview = ({ id, loaded, list, handleOverviewGetList, handleOverviewGetId
           <div className={`overview-header`}>
             <h1>{list[id].name}</h1>
           </div>
-          <div className={`overview-description`}>
-            <p>{list[id].description}</p>
+          <div className={`overview-description fade-down `}>
+            <p >{list[id].description}</p>
           </div>
         </div>
+        <div className={`overview-control`}>
+          KEKA
+        </div>
       </div>
+
     );
   };
   return (
